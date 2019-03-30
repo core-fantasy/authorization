@@ -1,0 +1,38 @@
+micronaut:
+  application:
+    name: com.corefantasy.authorization
+  server:
+    port: 8080
+  endpoints:
+    info:
+      enabled: true
+      sensitive: false
+  security:
+    enabled: true
+    # TODO: figure out how to properly secure these
+    endpoints:
+      login:
+        enabled: true
+      oauth:
+        enabled: true
+    token:
+      roles-name: roles
+      jwt:
+        bearer:
+          enabled: false
+        cookie:
+          enabled: true
+          cookie-name: JWT
+          # TODO: figure out success and failure re-direct paths
+        enabled: true
+        generator:
+          access-token-expiration: 86400 # seconds
+        signatures:
+          secret:
+            generator:
+              secret: "${JWT_GENERATOR_SIGNATURE_SECRET}"
+              jws-algorithm: HS256
+---
+com:
+  corefantasy:
+    google-id: "${GOOGLE_ID}"
