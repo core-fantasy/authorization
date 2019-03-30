@@ -1,0 +1,18 @@
+language: java
+
+jdk:
+  - openjdk11
+
+services:
+  - docker
+
+script:
+  - ./gradlew build
+  - docker build . -t authorization
+  - docker tag authorization corefantasy/authorization
+
+deploy:
+  provider: script
+  script: bash dockerPush.sh
+  on:
+    branch: master
