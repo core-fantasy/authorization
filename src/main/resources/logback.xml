@@ -7,8 +7,16 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>logstash-log4j2:5045</destination>
+        <!-- encoder is required -->
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <customFields>{"service":"authorization"}</customFields>
+        </encoder>
+    </appender>
 
     <root level="info">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="logstash" />
     </root>
 </configuration>
