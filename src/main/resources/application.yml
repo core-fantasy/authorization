@@ -23,7 +23,10 @@ micronaut:
         cookie:
           enabled: true
           cookie-name: JWT
-          # TODO: figure out success and failure re-direct paths
+          # TODO: keep these?
+          login-success-target-url: /home/
+          login-failure-target-url: /login-failure/
+          logout-target-url: /
         enabled: true
         generator:
           access-token-expiration: 86400 # seconds
