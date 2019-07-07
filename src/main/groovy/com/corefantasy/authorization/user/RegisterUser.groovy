@@ -1,10 +1,11 @@
-package com.corefantasy.authorization.user.commands
+package com.corefantasy.authorization.user
 
 import groovy.transform.ToString
 
 @ToString(includeNames = true)
 class RegisterUser {
-    String id
+    String provider
+    String providerId
     String name
     String email
 }
