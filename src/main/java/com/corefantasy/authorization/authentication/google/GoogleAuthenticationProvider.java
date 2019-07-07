@@ -36,9 +36,12 @@ public class GoogleAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Publisher<AuthenticationResponse> authenticate(AuthenticationRequest authenticationRequest) {
         String token = (String) authenticationRequest.getSecret();
+        /*
+        Uncomment for testing
         if (token.startsWith("test-test-test")) {
             return Flowable.just(testing(token));
         }
+         */
         return Flowable.just(validateToken(token));
     }
 

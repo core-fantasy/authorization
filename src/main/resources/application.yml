@@ -13,7 +13,7 @@ micronaut:
     endpoints:
       login:
         enabled: true
-      oauth:
+      logout:
         enabled: true
     token:
       roles-name: roles
@@ -23,10 +23,9 @@ micronaut:
         cookie:
           enabled: true
           cookie-name: JWT
-          # TODO: keep these?
-          login-success-target-url: /home/
-          login-failure-target-url: /login-failure/
-          logout-target-url: /
+          login-success-target-url: /api/authorization/v1/authorized
+          login-failure-target-url: /api/authorization/v1/authorized
+          logout-target-url: /api/authorization/v1/authorized
         enabled: true
         generator:
           access-token-expiration: 86400 # seconds
